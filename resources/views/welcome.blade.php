@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>LV</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,20 +21,32 @@
         </style>
 
         <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
     </head>
     <body class="antialiased">
         <a-scene>
         <a-assets>
-             <img id="city" src="https://thumbs.dreamstime.com/z/bangkok-city-panorama-nana-sukhumvit-road-aerial-photography-98237340.jpg">
+             <img id="city" src="">
         </a-assets>
-            <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" ></a-box>
-
-            <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E" class="clickable" cursor="rayOrigin: mouse">
+            <a-sphere position="0 1.25 -5" radius="1.25"   class="clickable" cursor="rayOrigin: mouse" src="https://cdn.shopify.com/s/files/1/0555/3725/files/louis-vuitton-logo_1024x1024.jpg?v=1525874771">
             </a-sphere>
 
+             <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"
+           event-set__enter="_event: mouseenter; color: #8FF7FF"
+           event-set__leave="_event: mouseleave; color: #4CC3D9"></a-box>
+
             <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-            <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-            <a-sky color="#ECECEC" src="#city"></a-sky>
+            <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" src="https://cdn.shopify.com/s/files/1/0003/3492/1742/files/damier_ebene.jpg?v=1602572567"></a-plane>
+            <a-sky color="slate" ></a-sky>
+
+             <a-camera>
+                <a-cursor id="cursor">
+                <a-animation begin="click" easing="ease-in" attribute="scale"
+                            fill="backwards" from="0.1 0.1 0.1" to="1 1 1" dur="150"></a-animation>
+                <a-animation begin="cursor-fusing" easing="ease-in" attribute="scale"
+                            from="1 1 1" to="0.1 0.1 0.1" dur="1500"></a-animation>
+                </a-cursor>
+            </a-camera>
         </a-scene>
     </body>
 
@@ -43,7 +55,7 @@
 
         var clickable = sceneEl.querySelector('.clickable');
         clickable.addEventListener('click', function(e){
-            console.log(e);
+            new Notification("You clicked")
         })
 
     </script>
